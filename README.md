@@ -1,6 +1,11 @@
 # Docker Containerization Lab 🐳
 
-A hands-on Docker lab focused on understanding containerization, networking, storage, and container-to-container communication using Docker on Ubuntu running on AWS EC2.
+[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+[![AWS](https://img.shields.io/badge/AWS-EC2-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
+[![Linux](https://img.shields.io/badge/Linux-Ubuntu-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://ubuntu.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+
+> A hands-on Docker lab covering containerization, networking, persistent storage, and container-to-container communication — built and tested on Ubuntu running on AWS EC2.
 
 This project documents practical implementation and troubleshooting rather than only theoretical concepts.
 
@@ -55,6 +60,8 @@ The lab covers:
 
 ## 1. Docker Container Basics
 
+[`01-container-basics/`](01-container-basics)
+
 Learned how to:
 
 - Run Docker containers
@@ -74,3 +81,120 @@ docker run
 docker exec
 docker stop
 docker rm
+```
+
+---
+
+## 2. Port Mapping
+
+[`02-port-mapping/`](02-port-mapping)
+
+Learned how to:
+
+- Expose container ports to the host
+- Map host ports to container ports (`-p HOST:CONTAINER`)
+- Run a containerized Nginx server reachable from outside the container
+- Verify connectivity using `curl` and browser access via the EC2 public IP
+
+### Commands Practiced
+
+```bash
+docker run -d -p 8080:80 nginx
+docker port <container_id>
+curl localhost:8080
+```
+
+---
+
+## 3. Docker Networking
+
+[`03-docker-networking/`](03-docker-networking)
+
+Learned how to:
+
+- Create a custom Docker bridge network
+- Attach containers to a shared network
+- Resolve containers by name using Docker's internal DNS
+- Verify container-to-container communication independent of the host network
+
+### Commands Practiced
+
+```bash
+docker network create my-bridge-net
+docker network ls
+docker run -d --name web --network my-bridge-net nginx
+docker run -it --network my-bridge-net alpine ping web
+```
+
+---
+
+## 4. Docker Volumes
+
+[`04-docker-volumes/`](04-docker-volumes)
+
+Learned how to:
+
+- Create and manage named Docker volumes
+- Persist data outside the container's writable layer
+- Share a volume across multiple containers
+- Confirm data survives container removal
+
+### Commands Practiced
+
+```bash
+docker volume create my-data
+docker run -d -v my-data:/usr/share/nginx/html nginx
+docker volume inspect my-data
+docker volume ls
+```
+
+---
+
+## 5. Bind Mounts
+
+[`05-bind-mounts/`](05-bind-mounts)
+
+Learned how to:
+
+- Mount a host directory directly into a container
+- Edit files on the host and see changes reflected live inside the container
+- Understand the difference between bind mounts and named volumes
+- Share files between host and container in both directions
+
+### Commands Practiced
+
+```bash
+docker run -d -v /home/ubuntu/site:/usr/share/nginx/html nginx
+docker inspect --format='{{json .Mounts}}' <container_id>
+```
+
+---
+
+## 📸 Screenshots
+
+Supporting screenshots for each stage of the lab are available in [`screenshots/`](screenshots).
+
+---
+
+## 🔜 What's Next
+
+- **Dockerfile & Custom Images** – building images from scratch instead of using base images
+- **Docker Compose** – defining and running multi-container setups declaratively
+- **Multi-Container Application** – wiring together an app + database container
+- **Docker + AWS Deployment** – pushing images to ECR and running them on ECS/EC2
+
+---
+
+## 🎓 About This Lab
+
+Part of my ongoing hands-on learning as a Cloud Pre-Sales Engineer building practical, infrastructure-adjacent skills alongside AWS architecture work. See my other repos for AWS Well-Architected reviews, cost optimization case studies, and architecture design examples.
+
+## 📫 Connect With Me
+
+[![Email](https://img.shields.io/badge/Email-abhishek071700%40gmail.com-D14836?style=flat&logo=gmail&logoColor=white)](mailto:abhishek071700@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Abhishek%20Pandey-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/abhishek-pandey-045241316)
+[![GitHub](https://img.shields.io/badge/GitHub-abhishek071700-181717?style=flat&logo=github&logoColor=white)](https://github.com/abhishek071700)
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).

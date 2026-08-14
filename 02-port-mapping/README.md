@@ -21,3 +21,19 @@ Nginx Web Server
         |
         ↓
 HTML Application
+
+
+
+## Evidence
+
+### Docker Port Mapping
+
+The container is exposing port `80` through host port `8080`.
+
+![Docker Port Mapping](../screenshots/docker-container-port-mapping.png)
+
+### Web Application Output
+
+The Dockerized web application was successfully accessed through the exposed port.
+
+![Docker Web Application](../screenshots/docker-webapp-browser.png)

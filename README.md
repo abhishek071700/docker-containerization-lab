@@ -80,14 +80,21 @@ Each lab was **implemented, tested, troubleshot, and documented** in a real Linu
 
 Learned:
 
-* Creating containers
+* Creating Docker containers
 * Starting and stopping containers
-* Listing containers
+* Listing running containers
 * Executing commands inside containers
-* Container lifecycle
-* Container names and IDs
+* Understanding container lifecycle
+* Working with container names and IDs
 
 📂 **[Open Lab →](./01-container-basics/)**
+
+### 📸 Evidence
+
+The Docker container was successfully created and verified using `docker ps`.
+
+![Docker Container Basics](./screenshots/docker-container-port-mapping.png)
+
 
 ---
 

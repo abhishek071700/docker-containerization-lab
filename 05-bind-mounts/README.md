@@ -1,14 +1,9 @@
-# Docker Bind Mounts
-
-## Objective
-
-Understand how a host directory can be directly mounted into a Docker container and how files can be shared between the Docker host and container.
-
 ---
 
-## 1. Create a Directory on the Host
+## Evidence
 
-On the Ubuntu Docker host:
+### Bind Mount Verification
 
-```bash
-mkdir -p ~/docker-bind
+The file created on the Ubuntu host was successfully accessed from inside the Docker container through the bind mount.
+
+![Docker Bind Mount](../screenshots/docker-bind-mount.png)

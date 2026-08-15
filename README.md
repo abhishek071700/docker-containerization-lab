@@ -108,24 +108,14 @@ curl localhost:8080
 
 ## 3. Docker Networking
 
-[`03-docker-networking/`](03-docker-networking)
+Docker networking allows containers to communicate with each other and provides controlled connectivity between application components.
 
-Learned how to:
+In this lab, I created a custom Docker bridge network named `my-app-network` and connected the application containers to it.
 
-- Create a custom Docker bridge network
-- Attach containers to a shared network
-- Resolve containers by name using Docker's internal DNS
-- Verify container-to-container communication independent of the host network
-
-### Commands Practiced
+### Custom Network Configuration
 
 ```bash
-docker network create my-bridge-net
-docker network ls
-docker run -d --name web --network my-bridge-net nginx
-docker run -it --network my-bridge-net alpine ping web
-```
-
+sudo docker network create my-app-network
 ---
 
 ## 4. Docker Volumes

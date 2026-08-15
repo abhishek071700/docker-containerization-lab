@@ -1,14 +1,9 @@
-# Docker Volumes
-
-## Objective
-
-Understand how Docker volumes provide persistent storage that can survive the removal and recreation of containers.
-
 ---
 
-## 1. Create a Docker Volume
+## Evidence
 
-Created a named Docker volume:
+### Docker Volume Persistence
 
-```bash
-sudo docker volume create my-data
+The same data remained available after the original container was removed and a new container was created using the same Docker volume.
+
+![Docker Volume Persistence](../screenshots/docker-volume-persistence.png)
